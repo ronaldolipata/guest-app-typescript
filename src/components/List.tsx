@@ -1,4 +1,5 @@
 import {
+  Box,
   Table,
   Thead,
   Tbody,
@@ -8,36 +9,26 @@ import {
   TableContainer,
   Image,
 } from '@chakra-ui/react';
-
-interface IProps {
-  guests: {
-    name: string;
-    age: number;
-    url: string;
-    note?: string;
-  }[];
-}
+import { IState as IProps } from '../App';
 
 const List: React.FC<IProps> = ({ guests }) => {
   const renderList = (): JSX.Element[] => {
-    return guests.map(({ name, age, url, note }) => {
+    return guests.map(({ img, name, age, note }, index) => {
       return (
-        <>
-          <Tr>
-            <Td>
-              <Image src={url} alt='image' />
-            </Td>
-            <Td>{name}</Td>
-            <Td>{age}</Td>
-            <Td>{note}</Td>
-          </Tr>
-        </>
+        <Tr key={index}>
+          <Td>
+            <Image src={img} alt='image' />
+          </Td>
+          <Td>{name}</Td>
+          <Td>{age}</Td>
+          <Td>{note}</Td>
+        </Tr>
       );
     });
   };
 
   return (
-    <div>
+    <Box>
       <TableContainer>
         <Table variant='simple'>
           <Thead>
@@ -51,7 +42,7 @@ const List: React.FC<IProps> = ({ guests }) => {
           <Tbody>{renderList()}</Tbody>
         </Table>
       </TableContainer>
-    </div>
+    </Box>
   );
 };
 
