@@ -1,4 +1,4 @@
-# TechVentures
+# Guest App React TypeScript
 
 Simple Guest App in React using Typescript and Chakra UI
 
